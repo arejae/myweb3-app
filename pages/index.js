@@ -37,9 +37,14 @@ export default function Home() {
 
     // If user is not connected to the Goerli network, let them know and throw an error
     const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 5) {
-      window.alert("Change the network to Goerli");
-      throw new Error("Change network to Goerli");
+    console.log("chainId:"+chainId);
+    //31337 - Hardhat localhost
+    if (chainId !== 5 && chainId !== 11155111 && chainId !== 31337) {
+      //window.alert("Change the network to Goerli Or Sepolia");
+      //throw new Error("Change network to Goerli or Sepolia");
+      console.log("Change the network to Goerli Or Sepolia");
+    } else {
+      console.log("network satisfy our need.."+chainId);
     }
 
     if (needSigner) {
